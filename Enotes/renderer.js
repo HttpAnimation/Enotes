@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { ipcRenderer, remote } = require('electron');
+const { remote } = require('electron');
 
 const noteTextarea = document.getElementById('note');
 const saveAsInput = document.getElementById('saveAsInput');
@@ -20,13 +20,8 @@ function saveNote() {
   }
 }
 
-// Load note from file
-function loadNoteFromFile(fileName) {
-  fs.readFile(`Enotes/${fileName}.txt`, 'utf8', (err, data) => {
-    if (err) return;
-    noteTextarea.value = data;
-  });
-}
+// Event listener for save button click
+document.getElementById('saveButton').addEventListener('click', saveNote);
 
 // Event listener for Ctrl+S or Command+S shortcut to save the note
 document.addEventListener('keydown', (event) => {
@@ -35,9 +30,6 @@ document.addEventListener('keydown', (event) => {
     saveNote();
   }
 });
-
-// Event listener for save button click
-document.getElementById('saveButton').addEventListener('click', saveNote);
 
 // Event listener for file name input change
 saveAsInput.addEventListener('change', () => {
