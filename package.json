@@ -1,7 +1,7 @@
 {
   "name": "enotes",
   "version": "1.0.0",
-  "description": "Electron Notes App",
+  "description": "Electron based Notes App",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
